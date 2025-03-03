@@ -3,13 +3,31 @@
         "gltf_path": "models/pyramid.glb", 
         "texture_path": "textures/pyramid.png",
         "position": [500.0, 0.0, 1500.0], 
-        "scale": 100
+        "scale": 200
+    },
+    {
+        "gltf_path": "models/ship.glb", 
+        "texture_path": "",
+        "position": [-10.0, -1.0, 15.0], 
+        "scale": 4
     },
     { 
         "gltf_path": "models/rock2.glb", 
         "texture_path": "textures/rock.png",
-        "position": [10.0, 0.0, 15.0], 
+        "position": [20.0, 0.0, 15.0], 
         "scale": 0.9 
+    },
+    { 
+        "gltf_path": "models/rock2.glb", 
+        "texture_path": "textures/rock.png",
+        "position": [22.0, 0.0, 8.0], 
+        "scale": 1.2 
+    },
+    { 
+        "gltf_path": "models/rock4.glb", 
+        "texture_path": "textures/rock.png",
+        "position": [17.0, 0.0, 3.0], 
+        "scale": 1.2 
     },
     { 
         "gltf_path": "models/rock1.glb", 
@@ -18,16 +36,28 @@
         "scale": 0.8 
     },
     { 
-        "gltf_path": "models/rock2.glb", 
+        "gltf_path": "models/rock1.glb", 
         "texture_path": "textures/rock.png",
-        "position": [15.0, 0.0, 32.0], 
-        "scale": 0.6 
+        "position": [22.0, 0.0, 27.0], 
+        "scale": 1.8 
     },
     { 
         "gltf_path": "models/rock1.glb", 
         "texture_path": "textures/rock.png",
-        "position": [18.0, 0.0, 19.0], 
-        "scale": 1.0 
+        "position": [22.0, 0.0, 327.0], 
+        "scale": 1.8 
+    },
+    { 
+        "gltf_path": "models/rock2.glb", 
+        "texture_path": "textures/rock.png",
+        "position": [15.0, 0.0, 32.0], 
+        "scale": 1.6 
+    },
+    { 
+        "gltf_path": "models/rock1.glb", 
+        "texture_path": "textures/rock.png",
+        "position": [180.0, 0.0, 19.0], 
+        "scale": 2.0 
     },
     { 
         "gltf_path": "models/gig.glb", 
@@ -44,20 +74,62 @@
     { 
         "gltf_path": "models/rock2.glb", 
         "texture_path": "textures/rock.png",
+        "position": [95.0, 0.0, 162.0], 
+        "scale": 2.6 
+    },
+    { 
+        "gltf_path": "models/rock4.glb", 
+        "texture_path": "textures/rock.png",
+        "position": [95.0, 0.0, 62.0], 
+        "scale": 3.6 
+    },
+    { 
+        "gltf_path": "models/rock2.glb", 
+        "texture_path": "textures/rock.png",
         "position": [-55.0, 0.0, 12.0], 
         "scale": 2.6 
     },
     { 
         "gltf_path": "models/rock2.glb", 
         "texture_path": "textures/rock.png",
-        "position": [-5.0, 0.0, 12.0], 
+        "position": [-15.0, 0.0, 12.0], 
         "scale": 0.6 
     },
     { 
         "gltf_path": "models/rock2.glb", 
         "texture_path": "textures/rock.png",
-        "position": [-15.0, 0.0, 12.0], 
+        "position": [-25.0, 0.0, 12.0], 
         "scale": 3.6 
+    },
+    { 
+        "gltf_path": "models/rock2.glb", 
+        "texture_path": "textures/rock.png",
+        "position": [55.0, 0.0, 12.0], 
+        "scale": 3.6 
+    },
+    { 
+        "gltf_path": "models/rock3.glb", 
+        "texture_path": "textures/rock.png",
+        "position": [85.0, 0.0, 12.0], 
+        "scale": 2.6 
+    },
+    { 
+        "gltf_path": "models/rock4.glb", 
+        "texture_path": "textures/rock.png",
+        "position": [85.0, 0.0, -12.0], 
+        "scale": 2.6 
+    },
+    { 
+        "gltf_path": "models/rock1.glb", 
+        "texture_path": "textures/rock.png",
+        "position": [125.0, 0.0, -25.0], 
+        "scale": 1.6 
+    },
+    { 
+        "gltf_path": "models/rock2.glb", 
+        "texture_path": "textures/rock.png",
+        "position": [145.0, 0.0, -35.0], 
+        "scale": 2.6 
     },
     { 
         "gltf_path": "models/rock2.glb", 
@@ -202,5 +274,23 @@
         "texture_path": "textures/rock.png",
         "position": [420.0, 0.0, -30.0], 
         "scale": 5.1
+    },
+    { 
+        "gltf_path": "models/rock4.glb", 
+        "texture_path": "textures/rock.png",
+        "position": [455.0, 0.0, -35.0], 
+        "scale": 5.8
+    },
+    { 
+        "gltf_path": "models/rock1.glb", 
+        "texture_path": "textures/rock.png",
+        "position": [355.0, 0.0, -75.0], 
+        "scale": 3.8
+    },
+    { 
+        "gltf_path": "models/rock1.glb", 
+        "texture_path": "textures/rock.png",
+        "position": [1355.0, 0.0, -475.0], 
+        "scale": 3.8
     }
 ]

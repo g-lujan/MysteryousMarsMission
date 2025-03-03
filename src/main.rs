@@ -61,11 +61,11 @@ async fn main() {
     set_cursor_grab(grabbed);
     show_mouse(false);
 
-    let mut time = 0.0;
+    let mut time_elapsed = 0.0;
 
     loop {
         let delta = get_frame_time();
-        time += delta;
+        time_elapsed += delta;
 
         if is_key_pressed(KeyCode::Escape) {
             break;
@@ -76,7 +76,6 @@ async fn main() {
             show_mouse(!grabbed);
         }
 
-        // Handle camera movement using the new function
         handle_camera_movement(&mut camera, delta);
 
         // Handle mouse movement for rotation
@@ -101,9 +100,8 @@ async fn main() {
             ..Default::default()
         });
 
-        clear_background(LIGHTGRAY);
+        clear_background(ORANGE);
 
-        // Draw 3D objects as usual
         draw_plane(
             vec3(0.0, 0.0, 0.0),
             vec2(2000.0, 2000.0),
@@ -115,8 +113,7 @@ async fn main() {
             draw_mesh(&rock.mesh);
         }
         
-        // Set the "time" uniform for animation
-        noise_material.set_uniform("time", time);
+        noise_material.set_uniform("time", time_elapsed);
 
         // Reset to the default render target (the screen)
         set_default_camera();
@@ -127,7 +124,7 @@ async fn main() {
             &screen_texture.texture,
             0.0,
             0.0,
-            WHITE,
+            RED,
             DrawTextureParams {
                 dest_size: Some(Vec2::new(screen_width(), screen_height())),
                 ..Default::default()
@@ -135,8 +132,6 @@ async fn main() {
         );
         gl_use_default_material();
 
-        // Render text
-        set_default_camera();
         draw_hud();
         next_frame().await;
     }
@@ -149,4 +144,6 @@ fn draw_hud(){
     if (get_time() as u64) % 2 == 0 {
         draw_text("DISABLED", 130.0, 40.0, 20.0, RED);
     }
+    draw_text("BATTERY", 1070.0, 20.0, 20.0, LIGHTGRAY);
+    draw_text("|||||||", 1140.0, 20.0, 20.0, GREEN);
 }

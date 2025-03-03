@@ -1,7 +1,7 @@
 use glam::Vec3;
 use macroquad::prelude::*;
 
-const MOVE_SPEED: f32 = 5.5;
+const MOVE_SPEED: f32 = 10.5;
 const LOOK_SPEED: f32 = 0.2;
 
 pub enum Direction {

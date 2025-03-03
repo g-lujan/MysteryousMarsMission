@@ -5,13 +5,17 @@ pub async fn convert_to_macroquad_mesh(gltf_mesh: gltf::mesh::Mesh<'_>, buffers:
     let mut vertices: Vec<Vertex> = Vec::new();
     let mut indices: Vec<u16> = Vec::new();
 
-    // Iterate through the primitives in the mesh
     for primitive in gltf_mesh.primitives() {
         let reader = primitive.reader(|buffer| Some(&buffers[buffer.index()]));
         let positions = reader.read_positions();
         let tex_coords = reader.read_tex_coords(0);
+                
+        // Access material and its color properties
+        let material_color = primitive.material().pbr_metallic_roughness().base_color_factor();
+        let vertex_color = Color::new(material_color[0], material_color[1], material_color[2], material_color[3]);
         
         if let Some(positions) = positions {
+            // Handle texture data
             let uvs = match tex_coords {
                 Some(ReadTexCoords::U8(iter)) => {
                     iter.map(|uv| Vec2::new(uv[0] as f32 / 255.0, uv[1] as f32 / 255.0)).collect::<Vec<_>>()
@@ -25,6 +29,7 @@ pub async fn convert_to_macroquad_mesh(gltf_mesh: gltf::mesh::Mesh<'_>, buffers:
                 None => Vec::new(),
             };
 
+            // Fill the macroquad vertex with the gltf vertex information
             for (i, position) in positions.enumerate() {
                 let uv = if i < uvs.len() {
                     uvs[i]
@@ -38,7 +43,7 @@ pub async fn convert_to_macroquad_mesh(gltf_mesh: gltf::mesh::Mesh<'_>, buffers:
                     position[2] * scale + world_position[2],
                     uv.x,
                     uv.y,
-                    WHITE,
+                    vertex_color,
                 ));
             }
         }
@@ -50,10 +55,15 @@ pub async fn convert_to_macroquad_mesh(gltf_mesh: gltf::mesh::Mesh<'_>, buffers:
         }
     }
 
-    // Create a texture from the texture data
+    if texture_data.is_empty() {
+        return Mesh {
+            vertices,
+            indices,
+            texture: None,
+        };
+    }
+    
     let texture = Texture2D::from_file_with_format(texture_data, None);
-
-    // Return the mesh with the processed vertices, indices, and texture
     Mesh {
         vertices,
         indices,

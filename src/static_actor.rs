@@ -21,9 +21,8 @@ struct ActorData {
 }
 
 
-// use to load many static actors of the same mesh
-pub async fn load_static_actors(file_path: &str) -> Result<Vec<StaticActor>, Box<dyn Error>> {
-    let mut file = std::fs::File::open(file_path)?;
+pub async fn load_static_actors(json_path: &str) -> Result<Vec<StaticActor>, Box<dyn Error>> {
+    let mut file = std::fs::File::open(json_path)?;
     let mut data = String::new();
     file.read_to_string(&mut data)?;
     let actor_data: Vec<ActorData> = serde_json::from_str(&data)?;
@@ -39,7 +38,13 @@ pub async fn load_static_actors(file_path: &str) -> Result<Vec<StaticActor>, Box
             (gltf, buffers)
         };
         let gltf_mesh = gltf.meshes().next().expect("No meshes found");
-        let texture_data = fs::read(&data.texture_path)?;
+        
+        let texture_data = if !data.texture_path.is_empty() {
+            fs::read(&data.texture_path)?
+        } else {
+            Vec::new() 
+        };
+        
         let mesh = convert_to_macroquad_mesh(gltf_mesh, buffers, &texture_data, data.scale, Vec3::new(data.position[0], data.position[1], data.position[2])).await;
         actors.push(StaticActor { mesh, boundary: None });
     }
